@@ -15,3 +15,15 @@
   text-align: center;
 }
 
+
+.grey-color{
+  color: rgb(60, 59, 59);
+}
+
+.one-rem-margin{
+  margin: 1rem;
+}
+
+.input-field{
+  width: 50%;
+}
