@@ -13,3 +13,15 @@
 - Filter results by language
 - 2 page minimum, one to render results of query
 - responsive design to multiple device sizes
+
+
+
+Set up
+- `npx create-react-app app-name` on command line
+- `cd app-name` on command line
+- `npm install ` if no package.json file exists
+- `npm install @material-ui/core` on command line
+- 
+- 
+- 
+- 
