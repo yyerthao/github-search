@@ -7,6 +7,7 @@ function App() {
   return (
     <div>
       <h1 className="App-header">GitHub Repo Search</h1>
+      <hr className="hr-style"></hr>
       <SearchQuery/>
     </div>
   );

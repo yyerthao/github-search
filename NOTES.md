@@ -15,13 +15,18 @@
 - responsive design to multiple device sizes
 
 
+* Each result should display the following traits about the repository:
+- default sort key(best match)
+- number of stars
+- filter by language
+
 
 Set up
 - `npx create-react-app app-name` on command line
 - `cd app-name` on command line
 - `npm install ` if no package.json file exists
 - `npm install @material-ui/core` on command line
-- 
-- 
-- 
+- `npm install axios` - this is needed for axios calls
+- `npm install express` - so we can use express libraries for our server side
+- `npm install redux`
 - 

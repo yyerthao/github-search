@@ -10,6 +10,9 @@
   justify-content: center;
 }
 
+.container{
+  margin: 0 4rem;
+}
 
 .center{
   text-align: center;
@@ -21,10 +24,13 @@
 }
 
 .one-rem-margin{
-  margin: 1rem;
+  margin: .5rem;
 }
 
 .input-field{
   width: 50%;
 }
 
+.hr-style{
+  width: 40%;
+}
