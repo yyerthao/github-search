@@ -81,14 +81,19 @@ const handleSubmit = (event) => {
             setData(data)
         });
     }
-    
+
+
 // function to set state inside app
 // the data we get back, we will grab the properties to set in here    
-const setData= ({owner, name, avatar_url}) => {
-    setOwner(owner);
-    setName(name);
-    setAvatar(avatar_url);
+const setData = ({...gitHubRepo}) => {
+    
+    // setOwner(owner);
+    // setName(name);
+    // setAvatar(avatar_url);
+
+    console.log('Set Data is working');
 }
+
 
  return(
     <div>
