@@ -3,7 +3,13 @@ import Results from '../Results/Results';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import Avatar from '@material-ui/core/Avatar';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Typography from '@material-ui/core/Typography';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -22,7 +28,10 @@ const useStyles = makeStyles((theme) => ({
     card: {
         maxWidth: 345,
         justify: "center"
-    }
+    },
+    rootCard: {
+        maxWidth: 345,
+        },
 }));
 
 // start of our react function component called SearchQuery
@@ -68,6 +77,7 @@ const handleSubmit = (event) => {
         )
         .then(res => res.json()) // will return a promise, calling it res and converting it to json
         .then(data => {// another .then, to get the data back and console.logging the data.
+            console.log(data)
             setData(data)
         });
     }
@@ -122,9 +132,33 @@ const setData= ({owner, name, avatar_url}) => {
         <section>
         <center>
             <h2>Your Results:</h2>
-            <Avatar src={avatar} alt="GitHub owner of Repo"></Avatar>
-            <p>Repo Name: {name}</p>
-            <p>Owner Name: {owner}</p>
+            {/* Might want to put a card here later */}
+            <Card className={classes.root}>
+                <CardActionArea>
+                    <CardMedia
+                    className={classes.media}
+                    image={avatar}
+                    title="GitHub Repository Information"
+                    />
+                    <CardContent>
+                    <Typography gutterBottom variant="h6" component="h2">
+                        Repo name: {name}
+                    </Typography>
+                    <Typography gutterBottom variant="h6" component="h2">
+                        Repo owner: {owner}
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                        Description of repo will go here
+                    </Typography>
+                    </CardContent>
+                </CardActionArea>
+                <CardActions>
+                    {/* Will put an onClick handler here later */}
+                    <Button size="small" color="primary">
+                    Details
+                    </Button>
+                </CardActions>
+            </Card>
         </center>
         </section>
      </div>
