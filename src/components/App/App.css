@@ -11,7 +11,8 @@
 }
 
 .container{
-  margin: 0 4rem;
+  display: flex;
+  justify-content: center;
 }
 
 .center{
@@ -33,4 +34,9 @@
 
 .hr-style{
   width: 40%;
+}
+
+.background{
+  display: flex;
+  float: right;
 }
