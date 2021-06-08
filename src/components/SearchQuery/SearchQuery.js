@@ -38,21 +38,19 @@ const useStyles = makeStyles((theme) => ({
 
 function SearchQuery(){
 
-// classes declared with useStyles() for material-ui 
 const classes = useStyles();
-// List of variables to use in this function component
-const [input, setInput] = useState('');
 const [repo, setRepo] = useState('');
 const [repoOwner, setRepoOwner] = useState('');
 const [owner, setOwner] = useState('');
 const [name, setName] = useState('');
-const [avatar, setAvatar] = useState('');
+const [avatar_url, setAvatar] = useState('');
+ 
 
 
 
 useEffect(() => {
 fetch(
-    `https://api.github.com/users/example`,)
+    `https://api.github.com/repos/yyerthao/movie-sagas`,)
     .then(res => res.json()) // will return a promise, calling it res and converting it to json
     .then(data => ( 
         // console.log(data);
@@ -61,10 +59,8 @@ fetch(
 }, []);
 
 
-
 const handleSubmit = (event) => {
     event.preventDefault();
-    setInput(event.target.value)
     console.log('Name:', repo, 'User:', repoOwner)
     fetch(
         `https://api.github.com/repos/${repoOwner}/${repo}`, 
@@ -85,14 +81,17 @@ const handleSubmit = (event) => {
 
 // function to set state inside app
 // the data we get back, we will grab the properties to set in here    
-const setData = ({...gitHubRepo}) => {
-    
-    // setOwner(owner);
-    // setName(name);
-    // setAvatar(avatar_url);
-
+const setData = ({...owner}) => {    
+    setName(name);
+    setAvatar(avatar_url);
     console.log('Set Data is working');
 }
+
+// name
+// html_url
+// language 
+// owner {login, avatar_url, }
+
 
 
  return(
@@ -138,11 +137,11 @@ const setData = ({...gitHubRepo}) => {
         <center>
             <h2>Your Results:</h2>
             {/* Might want to put a card here later */}
-            <Card className={classes.root}>
+            <Card className={classes.rootCard}>
                 <CardActionArea>
                     <CardMedia
                     className={classes.media}
-                    image={avatar}
+                    image={avatar_url}
                     title="GitHub Repository Information"
                     />
                     <CardContent>
@@ -160,7 +159,7 @@ const setData = ({...gitHubRepo}) => {
                 <CardActions>
                     {/* Will put an onClick handler here later */}
                     <Button size="small" color="primary">
-                    Details
+                        Details
                     </Button>
                 </CardActions>
             </Card>
