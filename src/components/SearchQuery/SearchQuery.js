@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import Results from '../Results/Results';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -9,8 +9,6 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-
-
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -39,31 +37,38 @@ const useStyles = makeStyles((theme) => ({
 function SearchQuery(){
 
 const classes = useStyles();
-const [repo, setRepo] = useState('');
-const [repoOwner, setRepoOwner] = useState('');
-const [owner, setOwner] = useState('');
+// STATES
 const [name, setName] = useState('');
-const [avatar_url, setAvatar] = useState('');
+const [userName, setUsername] = useState('');
+const [followers, setFollowers] = useState('');
+const [following, setFollowing] = useState('');
+const [repos, setRepos] = useState('');
+const [avatar, setAvatar] = useState('');
+const [userInput, setUserInput] = useState('');
+const [error, setError] = useState(null);
+
  
-
-
 
 useEffect(() => {
 fetch(
-    `https://api.github.com/repos/yyerthao/movie-sagas`,)
+    `https://api.github.com/users/yyerthao`,)
     .then(res => res.json()) // will return a promise, calling it res and converting it to json
     .then(data => ( 
-        // console.log(data);
+        // console.log(data)
         setData(data)
     ));
 }, []);
 
 
+const handleSearch = (e) => {
+    setUserInput(e.target.value)
+}
+
 const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('Name:', repo, 'User:', repoOwner)
+    console.log('Name:', repos)
     fetch(
-        `https://api.github.com/repos/${repoOwner}/${repo}`, 
+        `https://api.github.com/users/${setUsername}`, 
         {
             method: "GET",
             headers: new Headers({
@@ -73,26 +78,24 @@ const handleSubmit = (event) => {
         )
         .then(res => res.json()) // will return a promise, calling it res and converting it to json
         .then(data => {// another .then, to get the data back and console.logging the data.
-            console.log(data)
+            console.log('RETURNED OBJECT', data) // this returns a successful object back
             setData(data)
         });
     }
 
 
+
+
 // function to set state inside app
 // the data we get back, we will grab the properties to set in here    
-const setData = ({...owner}) => {    
-    setName(name);
-    setAvatar(avatar_url);
-    console.log('Set Data is working');
+const setData = ({name, login, followers, following, public_repos, avatar_url}) => {
+    setName(name)
+    setUsername(login);
+    setFollowers(followers);
+    setFollowing(following);
+    setRepos(public_repos);
+    setAvatar(avatar_url);    
 }
-
-// name
-// html_url
-// language 
-// owner {login, avatar_url, }
-
-
 
  return(
     <div>
@@ -101,19 +104,10 @@ const setData = ({...owner}) => {
                 onSubmit={handleSubmit}
                 className={classes.root}>
                 <TextField
-                    id="standard-basic" label="Owner Name"
+                    id="standard-basic" label="Username"
                     type="text" 
-                    onChange={(event) => setRepoOwner(event.target.value)}
-                    value={repoOwner}
-                    placeholder="Enter owner name" 
-                    className="one-rem-margin input-field">
-                </TextField>
-                <TextField
-                    id="standard-basic" label="Repo Name"
-                    type="text" 
-                    onChange={(event) => setRepo(event.target.value)}
-                    value={repo}
-                    placeholder="Enter repo name" 
+                    onChange={handleSearch}
+                    placeholder="Enter username" 
                     className="one-rem-margin input-field">
                 </TextField>
                 <br></br>
@@ -141,18 +135,20 @@ const setData = ({...owner}) => {
                 <CardActionArea>
                     <CardMedia
                     className={classes.media}
-                    image={avatar_url}
+                    image={avatar}
                     title="GitHub Repository Information"
                     />
                     <CardContent>
                     <Typography gutterBottom variant="h6" component="h2">
-                        Repo name: {name}
                     </Typography>
                     <Typography gutterBottom variant="h6" component="h2">
-                        Repo owner: {owner}
+                        Repo owner: {name}
+                        Repo owner: {userName}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
-                        Description of repo will go here
+                        {followers} Followers
+                        {repos} Repos
+                        {following} Friends
                     </Typography>
                     </CardContent>
                 </CardActionArea>
