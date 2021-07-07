@@ -1,42 +1,21 @@
-.App {
-  text-align: center;
-}
-
-
-.App-header {
-  color: rgb(37, 35, 35);
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.container{
-  display: flex;
-  justify-content: center;
-}
-
-.center{
-  text-align: center;
-}
-
-
-.grey-color{
-  color: rgb(60, 59, 59);
-}
-
-.one-rem-margin{
-  margin: .5rem;
-}
-
-.input-field{
-  width: 50%;
-}
 
 .hr-style{
   width: 40%;
 }
 
-.background{
+/*  */
+.search{
   display: flex;
-  float: right;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.App-header{
+  padding: 20px;
+  background: teal;
+}
+
+.card{
+  display: flex;
+  justify-content: center;
 }
