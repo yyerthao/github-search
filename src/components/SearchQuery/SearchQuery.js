@@ -95,6 +95,7 @@ console.log('HANDLING SUBMIT')
                 <Card>
                     <Image 
                         src={avatar} 
+                        alt="GitHub User Avatar"
                         wrapped 
                         ui={false} 
                         />
@@ -103,19 +104,19 @@ console.log('HANDLING SUBMIT')
                         <Card.Header>{userName}</Card.Header>
                     </Card.Content>
                     <Card.Content extra>
-                        <a>
-                            <Icon name='user' />
+                        <a href="/#">
+                            <Icon name='user'/>
                             {repos} Repositories
                         </a>
                     </Card.Content>
                     <Card.Content extra>
-                        <a>
+                        <a href="/#">
                             <Icon name='followers' />
                             {followers} Followers
                         </a>
                     </Card.Content>
                     <Card.Content extra>
-                        <a>
+                        <a href="/#">
                             <Icon name='following' />
                             Following {following}
                         </a>
