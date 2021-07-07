@@ -18,11 +18,16 @@ function SearchQuery(){
  
 // similar to componentDidMount
 useEffect(() => {
-fetch(`https://api.github.com/users/yyerthao`,)
+fetch(`https://api.github.com/users/example`,)
     .then(res => res.json())
     .then(data => { 
-        console.log(data)
-        setData(data)
+        // adding if statement here to catch non-existing user search
+            if (data.message){
+                setError(data.message)
+            } else {
+                console.log(data)
+                setData(data)
+            }
         });
     }, []);
     
@@ -63,12 +68,12 @@ console.log('HANDLING SUBMIT')
         .then(res => res.json()) 
         .then(data => {
             if(data.message) {
-                setError(data.message)
+                setError(data.message);
             } else {
-                setData(data)
+                setData(data);
+                setError(null) // resets error 
             }
         });
-        
     }
 
  return(
@@ -81,37 +86,43 @@ console.log('HANDLING SUBMIT')
             </Form.Group>
             </Form>
         </div>
-        <div className='card'>
-              <Card>
-                <Image 
-                    src={avatar} 
-                    wrapped 
-                    ui={false} 
-                />
-                <Card.Content>
-                    <Card.Header>{name}</Card.Header>
-                    <Card.Header>{userName}</Card.Header>
-                </Card.Content>
-                <Card.Content extra>
-                    <a>
-                        <Icon name='user' />
-                        {repos} Repositories
-                    </a>
-                </Card.Content>
-                <Card.Content extra>
-                    <a>
-                        <Icon name='followers' />
-                        {followers} Followers
-                    </a>
-                </Card.Content>
-                <Card.Content extra>
-                    <a>
-                        <Icon name='following' />
-                        Following {following}
-                    </a>
-                </Card.Content>
-            </Card>
-        </div>
+        {/* adding ternary operator here */}
+        {/* if there's an error, return h1, otherwise return div card */}
+        {error ? (
+            <h1>{error}</h1>
+            ) : (
+                <div className='card'>
+                <Card>
+                    <Image 
+                        src={avatar} 
+                        wrapped 
+                        ui={false} 
+                        />
+                    <Card.Content>
+                        <Card.Header>{name}</Card.Header>
+                        <Card.Header>{userName}</Card.Header>
+                    </Card.Content>
+                    <Card.Content extra>
+                        <a>
+                            <Icon name='user' />
+                            {repos} Repositories
+                        </a>
+                    </Card.Content>
+                    <Card.Content extra>
+                        <a>
+                            <Icon name='followers' />
+                            {followers} Followers
+                        </a>
+                    </Card.Content>
+                    <Card.Content extra>
+                        <a>
+                            <Icon name='following' />
+                            Following {following}
+                        </a>
+                    </Card.Content>
+                </Card>
+            </div>
+        )}
     </div>
  )
 }
