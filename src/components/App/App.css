@@ -12,6 +12,8 @@
 
 .App-header{
   padding: 20px;
+  display: flex;
+  justify-content: center;
   background: rgba(30, 106, 106, 0.442);
 }
 

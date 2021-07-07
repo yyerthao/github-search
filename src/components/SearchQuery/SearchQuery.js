@@ -16,7 +16,7 @@ function SearchQuery(){
     const [error, setError] = useState(null);
 
  
-
+// similar to componentDidMount
 useEffect(() => {
 fetch(`https://api.github.com/users/yyerthao`,)
     .then(res => res.json())
@@ -73,7 +73,6 @@ console.log('HANDLING SUBMIT')
 
  return(
     <div>
-        <div className='navbar'>GitHub Search</div>
         <div className='search'>
             <Form onSubmit={handleSubmit}>
             <Form.Group>
