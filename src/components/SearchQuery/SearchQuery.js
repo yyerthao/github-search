@@ -75,9 +75,9 @@ console.log('HANDLING SUBMIT')
     <div>
         <div className='navbar'>GitHub Search</div>
         <div className='search'>
-            <Form>
+            <Form onSubmit={handleSubmit}>
             <Form.Group>
-                <Form.Input placeholder='Github user' name='github user'/>
+                <Form.Input onChange={handleSearch} placeholder='Github user' name='github user'/>
                 <Form.Button content='Search' />
             </Form.Group>
             </Form>
