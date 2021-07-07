@@ -21,11 +21,13 @@ useEffect(() => {
 fetch(`https://api.github.com/users/yyerthao`,)
     .then(res => res.json())
     .then(data => { 
+        console.log(data)
         setData(data)
         });
     }, []);
     
-
+// this function sets the state in our app
+// essentially it takes the data back from the GH api to set into our setState
 const setData = ({
     name, 
     login, 
@@ -70,81 +72,12 @@ console.log('HANDLING SUBMIT')
     }
 
  return(
-    // <div>
-    //     <div className="container">
-    //         <FormLabel
-    //             onSubmit={handleSubmit}
-    //             className={classes.root}>
-    //             <TextField
-    //                 onChange={handleSearch}
-    //                 id="standard-basic" label="Username"
-    //                 type="text" 
-    //                 placeholder="Enter username" 
-    //                 className="one-rem-margin input-field">
-    //             </TextField>
-    //             <br></br>
-    //             <Button 
-    //                 type="submit"
-    //                 variant="contained"
-    //                 className="background"
-    //                 style={{
-    //                     borderRadius: '2.5px',
-    //                     color: "white",
-    //                     backgroundColor: "black",
-    //                     padding: "2px 10px",
-    //                     fontSize: "12px"
-    //                 }}>
-    //                 Search 
-    //             </Button>
-    //             {/* <Results/> */}
-    //         </FormLabel>
-    //     </div>
-
-    //     { error ? (
-    //         <h1>{error} </h1>
-    //     ) : (
-    //         <div>
-    //             <center>
-    //                 <h2>Your Results:</h2>
-    //                 <Card className={classes.rootCard}>
-    //                     <CardActionArea>
-    //                         <CardMedia
-    //                         className={classes.media}
-    //                         image={avatar}
-    //                         title="GitHub Repository Information"
-    //                         />
-    //                         <CardContent>
-    //                             <Typography gutterBottom variant="h6" component="h2">
-    //                                 Owner Name: {name}
-    //                                 <br/>
-    //                                 Repo Username: {userName}
-    //                                 <br/>
-    //                                 {followers} Followers
-    //                                 <br/>
-    //                                 {repos} Repositories
-    //                                 <br/>
-    //                                 {following} Friends
-    //                             </Typography>
-    //                         </CardContent>
-    //                     </CardActionArea>
-    //                     <CardActions>
-    //                         {/* Will put an onClick handler here later */}
-    //                         {/* <Button size="small" color="primary">
-    //                             Details
-    //                         </Button> */}
-    //                     </CardActions>
-    //                 </Card>
-    //             </center>
-    //         </div>
-    //     )}
-    //  </div>
-
     <div>
         <div className='navbar'>GitHub Search</div>
         <div className='search'>
             <Form>
             <Form.Group>
-                <Form.Input placeholder='Github user' name='namegithub user'/>
+                <Form.Input placeholder='Github user' name='github user'/>
                 <Form.Button content='Search' />
             </Form.Group>
             </Form>
@@ -157,21 +90,26 @@ console.log('HANDLING SUBMIT')
                     ui={false} 
                 />
                 <Card.Content>
-                <Card.Header>{userName}</Card.Header>
-                <Card.Meta>
-                    <span className='date'>Joined in 2015</span>
-                </Card.Meta>
-                <Card.Description>
-                    {followers} Followers
-                    <br></br>
-                    Following {following}
-                </Card.Description>
+                    <Card.Header>{name}</Card.Header>
+                    <Card.Header>{userName}</Card.Header>
                 </Card.Content>
                 <Card.Content extra>
-                <a>
-                    <Icon name='user' />
-                    22 Friends
-                </a>
+                    <a>
+                        <Icon name='user' />
+                        {repos} Repositories
+                    </a>
+                </Card.Content>
+                <Card.Content extra>
+                    <a>
+                        <Icon name='followers' />
+                        {followers} Followers
+                    </a>
+                </Card.Content>
+                <Card.Content extra>
+                    <a>
+                        <Icon name='following' />
+                        Following {following}
+                    </a>
                 </Card.Content>
             </Card>
         </div>

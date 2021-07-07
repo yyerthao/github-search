@@ -8,7 +8,7 @@ function App() {
     <div>
       <center>
       <h1 className="App-header">GitHub Repo Search</h1>
-      <hr className="hr-style"></hr>
+      {/* <hr className="hr-style"></hr> */}
       <SearchQuery/>
       </center>
     </div>
