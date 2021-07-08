@@ -111,13 +111,13 @@ console.log('HANDLING SUBMIT')
                     </Card.Content>
                     <Card.Content extra>
                         <a href="/#">
-                            <Icon name='followers' />
+                            <Icon name='user' />
                             {followers} Followers
                         </a>
                     </Card.Content>
                     <Card.Content extra>
                         <a href="/#">
-                            <Icon name='following' />
+                            <Icon name='user' />
                             Following {following}
                         </a>
                     </Card.Content>
